@@ -19,8 +19,7 @@ class NewsRepository(
 
    fun getSavedNews()=db.getArticlesDao().getAllArticles()
 
-    //delete article in room database
-    suspend fun delete(article: Article)=db.getArticlesDao().deleteArticles(article)
+
 
 
 

@@ -46,7 +46,5 @@ class NewsViewModel(var newsRepository: NewsRepository): ViewModel() {
     }
     fun getSavedNews()=newsRepository.getSavedNews()
 
-    fun deleteArticle(article: Article)=viewModelScope.launch {
-        newsRepository.delete(article)
-    }
+
 }

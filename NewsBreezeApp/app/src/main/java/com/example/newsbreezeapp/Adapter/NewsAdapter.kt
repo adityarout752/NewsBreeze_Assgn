@@ -9,10 +9,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.newsbreezeapp.R
 import com.example.newsbreezeapp.modelData.Article
+import com.example.newsbreezeapp.viewModel.NewsViewModel
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.items_layout.view.*
 
 
 class NewsAdapter: RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
+    lateinit var viewModel: NewsViewModel
 
     inner class ArticleViewHolder(itemview: View): RecyclerView.ViewHolder(itemview)
 
@@ -43,6 +46,10 @@ val article=differ.currentList[position]
             tvDescription.text=article.description
             onItemClickListener?.let{
                 it(article)
+            }
+            buttonSave.setOnClickListener {
+                viewModel.saveArticle(article)
+                Snackbar.make(this,"Article saved succesfully", Snackbar.LENGTH_SHORT).show()
             }
 
         }
